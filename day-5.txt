@@ -29,7 +29,8 @@ console.log((function (str) {
   let arr = [];
   for(let name of str)
   {
-    arr.push(name.charAt(0).toUpperCase() + name.slice(1).toLowerCase());
+    arr.push(name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()); 
+    //making title caps for first character in the given string
   }
   return arr;
 })(["his","arUn","Akhil"]));
