@@ -1,0 +1,321 @@
+DAY 5 TASKS
+
+1.Do the below programs in anonymous function & IIFE
+
+
+Question:    a. Print odd numbers in an array
+
+CODE:
+(function (arr) {
+  let odd = [];
+  for (let i in arr) {
+    if (arr[i] % 2 !== 0) {
+      odd.push(arr[i]);
+    }
+  }
+  console.log(odd);
+})([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]);
+
+
+OUTPUT:
+[1,  3,  5, 7, 9, 11, 13]
+
+
+
+QUESTION:   b.Convert all the strings to title caps in a string array
+
+CODE:
+console.log((function (str) {
+  let arr = [];
+  for(let name of str)
+  {
+    arr.push(name.charAt(0).toUpperCase() + name.slice(1).toLowerCase());
+  }
+  return arr;
+})(["his","arUn","Akhil"]));
+
+OUTPUT:
+[ 'His', 'Arun', 'Akhil' ]
+
+
+
+QUESTION:   c.Sum of all numbers in an array
+
+
+CODE:
+(function (arr) {
+  let sum = 0; 
+  for (var i = 0; i < arr.length; i++) {
+    sum = sum + arr[i];   //logic for adding numbers in the given array
+  }
+  console.log(sum);
+})([4, 5, 7, 2,9]);
+
+OUTPUT:
+27
+
+
+
+
+QUESTION:  d.Return all the prime numbers in an array
+
+CODE:
+
+//here we use two functions
+// one for sending single index value of array
+// second for checking whether the parameter sent is prime or not
+
+let singleValue = function (prime) {
+  let primeNos = [];
+  for (i = 0; i < prime.length; i++) {
+    if (checkPrime(prime[i])) {
+      //this statement calls the second function check prime with single index value
+      primeNos.push(prime[i]);
+    }
+  }
+  return primeNos;
+};
+
+function checkPrime(number) {
+  if (number <= 1) {
+    return false;
+  } else {
+    for (let i = 2; i < number; i++) {
+      if (number % i == 0) {
+        //this statement checks for prime numbers
+        return false;
+      }
+    }
+
+    return true;
+  }
+}
+console.log(
+  singleValue([
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+  ])
+);
+
+
+OUTPUT:
+[2,  3,  5,  7,11, 13, 17, 19]
+
+
+QUESTION: e.Return all the palindromes in an array
+
+
+CODE:
+
+let palindrome = function (str) {
+  let pal = [];
+  for (let a in str) {
+    if (str[a] == str[a].split("").reverse().join("")) {
+      // if condition for checking whether the give string is palindrome or not
+      pal.push(str[a]);
+    }
+  }
+  return pal;
+};
+console.log(palindrome(["121", "123", "151", "ABA", "abc", "acca", "ACC"]));
+
+
+OUTPUT:
+[ '121', '151', 'ABA', 'acca' ]
+
+
+QUESTION:    f.Return median of two sorted arrays of same size
+
+CODE:
+let a = [1, 2, 4, 6, 7, 13,14];
+let b = [3, 3, 4, 8, 9, 14, 12];
+//we are using two arrays a,b
+
+console.log(
+  (function (arr1, arr2) {
+    let combine = [...arr1, ...arr2]; //combinig two arrays a,b
+    let s = combine.sort((a, b) => a - b); //sorting the combine array
+
+    return combine.length % 2 !== 0
+      ? s[Math.floor(s.length / 2)]
+      : (s[Math.floor(s.length / 2)] + s[s.length / 2 - 1]) / 2; 
+      
+      //checking the median using conditional operator
+  })(a, b)
+);
+
+
+
+OUTPUT:
+6.5
+
+
+
+QUESTION:   g.Remove duplicates from an array
+
+CODE:
+
+let names = function (arr) {
+  let unique = new Set(arr);
+  // using the set object for removing the duplicates
+
+  return unique;
+};
+
+console.log(
+  names([
+    "Arun",
+    "Vishnu",
+    "Sravan",
+    "Arun",
+    "Harsha",
+    "Akhil",
+    "Sravan",
+    "Tarun",
+  ])
+);
+
+
+
+OUTPUT:
+{ 'Arun', 'Vishnu', 'Sravan', 'Harsha', 'Akhil', 'Tarun' }
+
+
+QUESTION:   h.Rotate an array by k times
+
+CODE:
+
+let rotate = function (array, k) {
+  for (i = 0; i < k; i++) {
+    let temp = array.shift();
+    array.push(temp);
+  }
+  return array;
+};
+console.log(rotate([2, 3, 4, 5, 6, 7, 8], 2));
+
+
+OUTPUT:
+[ 4, 5, 6, 7, 8, 2, 3]
+
+
+
+
+2.TO READ TASK
+
+
+3.Do the below programs in arrow functions
+
+QUESTION:       a. Print odd numbers in an array
+
+CODE:
+
+let a= (arr)=>{
+    let odd = [];
+  for (let i in arr) {
+    if (arr[i] % 2 !== 0) {
+      odd.push(arr[i]);
+    }
+  }
+  console.log(odd);
+
+}
+
+a([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]);
+
+OUTPUT:
+[1,  3,  5, 7,9, 11, 13]
+
+
+
+QUESTION:  b.Convert all the strings to title caps in a string array  
+
+CODE:
+
+let caps = (str)  => {
+  let arr = [];
+  for(let name of str)
+  {
+    arr.push(name.charAt(0).toUpperCase() + name.slice(1).toLowerCase());
+  }
+  return arr;
+}
+
+console.log(caps(["his","arUn","Akhil"]));
+
+
+OUTPUT:
+[ 'His', 'Arun', 'Akhil' ]
+
+
+
+QUESTION:     c.Sum of all numbers in an array
+
+CODE:
+let sumOfElements=(arr) => {
+  let sum = 0;
+  for (var i = 0; i < arr.length; i++) {
+    sum = sum + arr[i];
+  }
+  console.log(sum);
+}
+
+sumOfElements([4, 5, 7, 2,2]);
+
+
+OUTPUT:
+20
+
+
+
+QUESTION:    d.Return all the prime numbers in an array
+
+CODE:
+
+
+let singleValue = (prime) =>{
+    let primeNos=[]
+  for(i=0; i<prime.length; i++){
+    if(checkPrime(prime[i])){
+      primeNos.push(prime[i]);
+    }
+  }return primeNos
+  } 
+
+let checkPrime=(number)=> {
+  if (number <= 1) {
+    return false;
+  } else {
+    for (let i = 2; i < number; i++) {
+      if (number % i == 0) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+}
+console.log(singleValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]));
+
+
+OUTPUT:
+
+[ 2,  3,  5,  7, 11, 13, 17, 19]
+
+
+
+QUESTION:    e.Return all the palindromes in an array
+
+CODE:
+let palindrome = (num) => {
+      let pal = [];
+      for (let a in num) {
+        if (num[a] == num[a].split("").reverse().join("")) {
+          pal.push(num[a]);
+        }
+      }
+      return pal;
+    };
+    console.log(palindrome(["121", "123", "151"]));
+
+OUTPUT:
+[ '121', '151' ]
